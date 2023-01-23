@@ -28,11 +28,11 @@ class Viking extends Soldier {
     receiveDamage(damage) {
         super.receiveDamage(damage);
         if (this.health > 0) return `${this.name} has received ${damage} points of damage`;
-        else return `${this.name} has died in act of combat`
+        else return `${this.name} has died in act of combat`;
     }
 
     battleCry() {
-        return 'Odin Owns You All!'
+        return 'Odin Owns You All!';
     }
 }
 
@@ -53,11 +53,11 @@ class War {
     }
 
     addViking(viking){
-        this.vikingArmy.push(viking)
+        this.vikingArmy.push(viking);
     }
 
     addSaxon(saxon){
-        this.saxonArmy.push(saxon)
+        this.saxonArmy.push(saxon);
     }
 
     armyAttack(attackingArmy, defendingArmy) {
@@ -67,16 +67,16 @@ class War {
 
         if (defender instanceof Saxon) this.saxonArmy = defendingArmy.filter(soldier => soldier.health > 0);
         else this.vikingArmy = defendingArmy.filter(soldier => soldier.health > 0);
-        
+
         return attackResult;
     }
 
     vikingAttack(){
-        return this.armyAttack(this.vikingArmy, this.saxonArmy)
+        return this.armyAttack(this.vikingArmy, this.saxonArmy);
     }
 
     saxonAttack(){
-        return this.armyAttack(this.saxonArmy, this.vikingArmy)
+        return this.armyAttack(this.saxonArmy, this.vikingArmy);
     }
 
     showStatus(){
