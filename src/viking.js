@@ -1,7 +1,3 @@
-Array.prototype.getRandomElement = function(){
-    return this[Math.floor(Math.random() * this.length)];
-}
-
 // Soldier
 class Soldier {
     constructor(health, strength) {
@@ -61,12 +57,13 @@ class War {
     }
 
     armyAttack(attackingArmy, defendingArmy) {
-        const attacker = attackingArmy.getRandomElement();
-        const defender = defendingArmy.getRandomElement();
+        const attacker = attackingArmy[Math.floor(Math.random() * attackingArmy.length)];
+
+        const defenderIndex = Math.floor(Math.random() * defendingArmy.length)
+        const defender = defendingArmy[defenderIndex];
         const attackResult = defender.receiveDamage(attacker.attack());
 
-        if (defender instanceof Saxon) this.saxonArmy = defendingArmy.filter(soldier => soldier.health > 0);
-        else this.vikingArmy = defendingArmy.filter(soldier => soldier.health > 0);
+        if (defender.health <= 0) defendingArmy.splice(defenderIndex, 1);
 
         return attackResult;
     }
